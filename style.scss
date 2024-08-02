@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text&family=Days+One&display=swap');
+
+$solarSystem: ("mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto", "sun", "moon","phobos","deimos","io","europa");
+
+//Planets propeties
+:root {
+  --europa-color: #999999;
+  --io-color: #999999;
+  --deimos-color: #999999;
+  --phobos-color: #999999;
+  --moon-color: #999999;
+  --mercury-color: #999999;
+  --venus-color: #e8cda2;
+  --earth-color: #b3caff;
+  --mars-color: #c07158;
+  --jupiter-color: #c9b5a4;
+  --saturn-color: #f0e2c4;
+  --uranus-color: #b8d8e1;
+  --neptune-color: #5e73bb;
+  --pluto-color: #c3b6aa;
+  --sun-color: #cc9f4c;
+}
+
+@mixin planetization {
+  @each $planet in $solarSystem {
+    &--#{$planet} {
+      .planet__atmosphere {
+        box-shadow: inset 10px 0px 12px -2px rgba(255,255,255,.2), 
+                    inset -70px 0px 50px 0px black,
+                    -5px 0px 10px -4px var(--#{$planet}-color);
+      }
+      .card__planet {
+        &::before {
+          opacity: 1 !important;border-left: 1px dashed rgba(255,255,255,1) !important;
+          border-color: var(--#{$planet}-color);
+          color: var(--#{$planet}-color);
+        }    
+      }
+      .tilt__icon {
+        color: white;
+        border: 1px solid white;
+        border-radius: 50%;
+        padding: 5px
+      }
+    }
+	}
+}
+
+//Planet rotation animation
+@keyframes planetRotate {
+  0%{
+    background-position: 0% center;
+  }
+  100%{
+    background-position: -200% center;
+  }
+}
+
+// End definitions
+//---------------------------
+
+//---------------------------
+//Start styles
+body{ 
+  background: url("https://i.pinimg.com/originals/ea/86/2d/ea862dcfaf1f0b6a1f0d670a0abfb632.jpg") no-repeat;
+  background-size: cover;
+  color: #fff;
+  height: 100%;
+  width: 100vw;
+  display: block;
+}
+
+.subtitle-container,
+.title-container {
+  color: #fff;
+  width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.title-container {
+  margin-top: 10em;
+  margin-bottom: 2em;
+}
+
+.subtitle-container {
+  margin-top: 3em;
+  margin-bottom: 5em;
+}
+
+.container {
+  display: block;
+  width: 100vw;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  font-family: "Major Mono Display";
+}
+
+.main__title {
+    font-family: 'Days One', sans-serif;
+    text-transform: uppercase;
+    font-size: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.planets-container-list,
+.planets-container {
+  width: 100vw;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  font-family: "Major Mono Display";
+  text-transform: lowercase;
+}
+
+.planets-container {
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-gap: 3em;
+}
+
+.planets-container-list {
+  grid-template-columns: 5% 7% 7% 10% 10% 5% 5% 5% 5% 23%;
+  grid-template-rows: repeat(auto-fill, 20em);
+  grid-gap: 10px;
+}
+
+.moon-texture {
+  background: #101010;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 6px;
+  margin-right: 10px;
+}
+
+.moon-label {
+    background: #fff;
+    color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 7px;
+    font-size: 6px;
+    margin-right: 10px;
+    min-width: 3em;
+    text-align: center;
+    font-family: 'Days One';
+    text-transform: uppercase;
+}
+
+.moon-label:hover {
+   text-decoration-line: underline;
+}
+
+.moon-label a {
+  text-decoration: none;
+}
+
+.moon-label-empty {
+  color: white;
+  border: 0px solid white;
+  border-radius: 1px;
+  padding: 6px;
+  font-size: 6px;
+  margin-right: 10px;
+  min-width: 3em;
+}
+
+.moons {
+  display: flex;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;  
+}
+
+.scale {
+    display: block;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    left: -3em;
+    top: 0.5em;
+}
+
+@media only screen and (max-width: 400px) {
+  .card {
+    width: 8em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 10em;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .card {
+    width: 15em;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    width: 17em;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .card {
+    width: 20em;
+  }
+}
+
+.card, .cardsimple {
+  display: flex;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  @include planetization;
+}
+
+.card__planet {
+  &::before {
+    content: '';
+    position: absolute;
+    height: 190px;
+    z-index: -2;
+    left: 50%;
+    top: 0%;    
+  }
+}
+
+.flag {
+  border: 1px solid #eaecf0;
+  width: 23px;
+  aspect-ratio: auto 23 / 12;
+  background: url(https://i.imgur.com/gQXggMP.png) no-repeat;
+  height: 12px;
+  
+  &__esa {
+    background: url() no-repeat;
+  }  
+  &__nasa {
+    background: url() no-repeat;
+  }  
+  &__jaxa {
+    background: url() no-repeat;
+  }  
+  &__urss {
+    background: url() no-repeat;
+  }  
+  &__cnsa {
+    background: url() no-repeat;
+  }  
+  &__germ {
+    background: url() no-repeat;
+  }  
+}
+
+.planet {
+  &__atmosphere {
+    height: 190px;
+    width: 190px;
+    position: relative;
+    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 65%);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  &__surface{
+    position: absolute; 
+    height: 100%;
+    width: 100%; 
+    z-index: -1;
+    background-size: cover;
+  }
+}
+
+//Different box-shadow for the sun
+.card--sun {
+  .planet__atmosphere {
+    box-shadow: 0px 0px 10px 0px var(--sun-color); 
+   }
+}
+
+.card__info {
+  width: 100%;
+}
+
+.info {
+  &__title {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 28px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__item {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    font-size: 12px;
+    .tilt__icon {
+      margin: 0 5px;
+    }
+  }
+  &__label {
+      font-size: 11px;
+  }
+  &__detail {
+      font-size: 9px;
+  }
+  &__line {
+    flex: 1;
+    margin: 0 5px;
+    border-bottom: 1px dashed rgba(255,255,255,.3); 
+  }
+}
+
+.tooltip {
+  position:relative;
+  display:inline-block;
+  cursor: help;
+  font-weight: bolder;
+}
+
+.bold_title {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  font-weight: bolder !important;
+}
+
+.highlight_title {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,78%) 53%,
+    hsl(0,0%,70%)100%);
+    color: #000;
+    text-align: left;
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid #ddd;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: -50%;
+    margin-left: -5em;
+    opacity: 0;
+    transition: opacity 1s;
+    font-size: 0.75em;
+    box-shadow: 0px 0px 10px 0px white; 
+}
+
+.tooltip .tooltiptext::after{
+  content:"";
+  position:absolute;
+  top:100%;
+  left:50%;
+  margin-left:-5px;
+  border-width:0px;
+  border-style:solid;
+  border-color:#ccc transparent transparent transparent;}
+
+.tooltip:hover .tooltiptext{
+  visibility:visible;
+  opacity:1
+}
+
+.planet__atmosphere:hover {
+   box-shadow: 1px 1px 15px white;
+}
+
+t1 {
+  font-family: 'Big Shoulders Text', cursive;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+t2 {
+  font-family: 'Big Shoulders Text', cursive;
+  font-size: 1.2em;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.dist {
+  position: absolute;
+  display: none;
+  border-top: 2px solid white;
+  margin-top: -27%;
+  text-align: center;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  font-family: 'Big Shoulders Text', cursive;
+  font-size: 0.8em;
+  height: 0.4em;
+  
+  &__mercury {
+    width: 46%;
+    margin-left: 38%;
+  }
+
+  &__venus {
+    width: 99%;
+    margin-left: 100%;
+  }
+  
+  &__earth {
+    width: 160%;
+    margin-left: 160%;
+  }
+  
+  &__mars {
+    width: 220%;
+    margin-left: 220%;
+  }  
+
+  &__jupiter {
+    width: 300%;
+    margin-left: 310%;
+  }
+
+  &__saturn {
+    width: 420%;
+    margin-left: 420%;
+  }
+
+  &__uranus {
+    width: 520%;
+    margin-left: 520%;
+  }
+
+  &__neptune {
+    width: 590%;
+    margin-left: 600%;
+  }
+
+  &__pluto {
+    width: 670%;
+    margin-left: 660%;
+  }
+}
+
+.show {
+    display: block;
+  
+  &__mercury {
+    animation: progressBarMercury 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+
+  &__venus {
+    animation: progressBarVenus 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+  
+  &__earth {
+    animation: progressBarEarth 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+  
+  &__mars {
+    animation: progressBarMars 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }  
+
+  &__jupiter {
+    animation: progressBarJupiter 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+
+  &__saturn {
+    animation: progressBarSaturn 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+
+  &__uranus {
+    animation: progressBarUranus 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+
+  &__neptune {
+    animation: progressBarNeptune 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+
+  &__pluto {
+    animation: progressBarPluto 0.1s ease-in-out;
+    animation-fill-mode:both; 
+  }
+}
+
+@keyframes progressBarMercury {
+  0% { width: 0; }
+  100% { width: 46%; }
+}
+
+@keyframes progressBarVenus {
+  0% { width: 0; }
+  100% { width: 99%; }
+}
+
+@keyframes progressBarEarth {
+  0% { width: 0; }
+  100% { width: 160%; }
+}
+
+@keyframes progressBarMars {
+  0% { width: 0; }
+  100% { width: 220%; }
+}
+
+@keyframes progressBarJupiter {
+  0% { width: 0; }
+  100% { width: 300%; }
+}
+
+@keyframes progressBarSaturn {
+  0% { width: 0; }
+  100% { width: 420%; }
+}
+
+@keyframes progressBarUranus {
+  0% { width: 0; }
+  100% { width: 520%; }
+}
+
+@keyframes progressBarNeptune {
+  0% { width: 0; }
+  100% { width: 600%; }
+}
+
+@keyframes progressBarPluto {
+  0% { width: 0; }
+  100% { width: 660%; }
+}
+
+
+.hide {
+    display: none;
+}
+
+.rings {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(24,19,25,0) 0%, rgba(53,52,51,0) 34%, rgba(55,54,52,1) 36%, rgba(56,55,53,1) 37%, rgba(68,67,66,1) 38%, rgba(56,55,53,1) 39%, rgba(68,67,66,1) 40%, rgba(56,55,53,1) 41%, rgba(87,77,76,1) 42%, rgba(87,77,76,1) 44%, rgba(113,110,103,1) 46%, rgba(113,110,103,1) 48%, rgba(113,98,93,1) 49%, rgba(113,98,93,1) 51%, rgba(122,115,105,1) 52%, rgba(113,98,93,1) 53%, rgba(113,98,93,1) 54%, rgba(122,115,105,1) 55%, rgba(106,99,89,1) 56%, rgba(106,99,89,1) 58%, rgba(79,76,76,0) 60%, rgba(65,64,70,1) 61%, rgba(65,64,70,1) 62%, rgba(90,85,89,1) 63%, rgba(78,74,73,1) 65%, rgba(78,73,74,1) 67%, rgba(78,73,74,0) 68%, rgba(78,73,75,1) 69%, rgba(78,73,75,1) 70%, rgba(78,73,76,0) 71%, rgba(77,72,76,0) 72%, rgba(24,19,25,0) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(24,19,25,0)), color-stop(34%,rgba(53,52,51,0)), color-stop(36%,rgba(55,54,52,1)), color-stop(37%,rgba(56,55,53,1)), color-stop(38%,rgba(68,67,66,1)), color-stop(39%,rgba(56,55,53,1)), color-stop(40%,rgba(68,67,66,1)), color-stop(41%,rgba(56,55,53,1)), color-stop(42%,rgba(87,77,76,1)), color-stop(44%,rgba(87,77,76,1)), color-stop(46%,rgba(113,110,103,1)), color-stop(48%,rgba(113,110,103,1)), color-stop(49%,rgba(113,98,93,1)), color-stop(51%,rgba(113,98,93,1)), color-stop(52%,rgba(122,115,105,1)), color-stop(53%,rgba(113,98,93,1)), color-stop(54%,rgba(113,98,93,1)), color-stop(55%,rgba(122,115,105,1)), color-stop(56%,rgba(106,99,89,1)), color-stop(58%,rgba(106,99,89,1)), color-stop(60%,rgba(79,76,76,0)), color-stop(61%,rgba(65,64,70,1)), color-stop(62%,rgba(65,64,70,1)), color-stop(63%,rgba(90,85,89,1)), color-stop(65%,rgba(78,74,73,1)), color-stop(67%,rgba(78,73,74,1)), color-stop(68%,rgba(78,73,74,0)), color-stop(69%,rgba(78,73,75,1)), color-stop(70%,rgba(78,73,75,1)), color-stop(71%,rgba(78,73,76,0)), color-stop(72%,rgba(77,72,76,0)), color-stop(100%,rgba(24,19,25,0)));
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(24,19,25,0) 0%,rgba(53,52,51,0) 34%,rgba(55,54,52,1) 36%,rgba(56,55,53,1) 37%,rgba(68,67,66,1) 38%,rgba(56,55,53,1) 39%,rgba(68,67,66,1) 40%,rgba(56,55,53,1) 41%,rgba(87,77,76,1) 42%,rgba(87,77,76,1) 44%,rgba(113,110,103,1) 46%,rgba(113,110,103,1) 48%,rgba(113,98,93,1) 49%,rgba(113,98,93,1) 51%,rgba(122,115,105,1) 52%,rgba(113,98,93,1) 53%,rgba(113,98,93,1) 54%,rgba(122,115,105,1) 55%,rgba(106,99,89,1) 56%,rgba(106,99,89,1) 58%,rgba(79,76,76,0) 60%,rgba(65,64,70,1) 61%,rgba(65,64,70,1) 62%,rgba(90,85,89,1) 63%,rgba(78,74,73,1) 65%,rgba(78,73,74,1) 67%,rgba(78,73,74,0) 68%,rgba(78,73,75,1) 69%,rgba(78,73,75,1) 70%,rgba(78,73,76,0) 71%,rgba(77,72,76,0) 72%,rgba(24,19,25,0) 100%);
+  background: -o-radial-gradient(center, ellipse cover,  rgba(24,19,25,0) 0%,rgba(53,52,51,0) 34%,rgba(55,54,52,1) 36%,rgba(56,55,53,1) 37%,rgba(68,67,66,1) 38%,rgba(56,55,53,1) 39%,rgba(68,67,66,1) 40%,rgba(56,55,53,1) 41%,rgba(87,77,76,1) 42%,rgba(87,77,76,1) 44%,rgba(113,110,103,1) 46%,rgba(113,110,103,1) 48%,rgba(113,98,93,1) 49%,rgba(113,98,93,1) 51%,rgba(122,115,105,1) 52%,rgba(113,98,93,1) 53%,rgba(113,98,93,1) 54%,rgba(122,115,105,1) 55%,rgba(106,99,89,1) 56%,rgba(106,99,89,1) 58%,rgba(79,76,76,0) 60%,rgba(65,64,70,1) 61%,rgba(65,64,70,1) 62%,rgba(90,85,89,1) 63%,rgba(78,74,73,1) 65%,rgba(78,73,74,1) 67%,rgba(78,73,74,0) 68%,rgba(78,73,75,1) 69%,rgba(78,73,75,1) 70%,rgba(78,73,76,0) 71%,rgba(77,72,76,0) 72%,rgba(24,19,25,0) 100%);
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(24,19,25,0) 0%,rgba(53,52,51,0) 34%,rgba(55,54,52,1) 36%,rgba(56,55,53,1) 37%,rgba(68,67,66,1) 38%,rgba(56,55,53,1) 39%,rgba(68,67,66,1) 40%,rgba(56,55,53,1) 41%,rgba(87,77,76,1) 42%,rgba(87,77,76,1) 44%,rgba(113,110,103,1) 46%,rgba(113,110,103,1) 48%,rgba(113,98,93,1) 49%,rgba(113,98,93,1) 51%,rgba(122,115,105,1) 52%,rgba(113,98,93,1) 53%,rgba(113,98,93,1) 54%,rgba(122,115,105,1) 55%,rgba(106,99,89,1) 56%,rgba(106,99,89,1) 58%,rgba(79,76,76,0) 60%,rgba(65,64,70,1) 61%,rgba(65,64,70,1) 62%,rgba(90,85,89,1) 63%,rgba(78,74,73,1) 65%,rgba(78,73,74,1) 67%,rgba(78,73,74,0) 68%,rgba(78,73,75,1) 69%,rgba(78,73,75,1) 70%,rgba(78,73,76,0) 71%,rgba(77,72,76,0) 72%,rgba(24,19,25,0) 100%);
+  background: radial-gradient(ellipse at center,  rgba(24,19,25,0) 0%,rgba(53,52,51,0) 34%,rgba(55,54,52,1) 36%,rgba(56,55,53,1) 37%,rgba(68,67,66,1) 38%,rgba(56,55,53,1) 39%,rgba(68,67,66,1) 40%,rgba(56,55,53,1) 41%,rgba(87,77,76,1) 42%,rgba(87,77,76,1) 44%,rgba(113,110,103,1) 46%,rgba(113,110,103,1) 48%,rgba(113,98,93,1) 49%,rgba(113,98,93,1) 51%,rgba(122,115,105,1) 52%,rgba(113,98,93,1) 53%,rgba(113,98,93,1) 54%,rgba(122,115,105,1) 55%,rgba(106,99,89,1) 56%,rgba(106,99,89,1) 58%,rgba(79,76,76,0) 60%,rgba(65,64,70,1) 61%,rgba(65,64,70,1) 62%,rgba(90,85,89,1) 63%,rgba(78,74,73,1) 65%,rgba(78,73,74,1) 67%,rgba(78,73,74,0) 68%,rgba(78,73,75,1) 69%,rgba(78,73,75,1) 70%,rgba(78,73,76,0) 71%,rgba(77,72,76,0) 72%,rgba(24,19,25,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00181319', endColorstr='#00181319',GradientType=1 );
+
+  transform: rotateX(75deg);
+}
